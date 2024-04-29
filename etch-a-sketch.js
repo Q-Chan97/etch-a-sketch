@@ -25,4 +25,18 @@ function resetGrid() {
     allTiles.forEach(element => {
         element.classList.remove("tileHovered");
     });
+    resizeGrid();
 };
+
+function resizeGrid() {
+    let newSize = prompt("How many squares would you like per side? In between 1 and 100 please.");
+    if (newSize > 100) {
+        prompt("That's too high! Try again.");
+    }
+    else if (Math.sign(newSize) == 0 || Math.sign(newSize) == -1) {
+        prompt("That's a bit too low. Try again.");
+    }
+    else if (newSize == null) {
+        generateDefaultGrid();
+    }
+}
