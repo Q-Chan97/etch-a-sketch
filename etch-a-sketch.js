@@ -39,4 +39,25 @@ function resizeGrid() {
     else if (newSize == null) {
         generateDefaultGrid();
     }
-}
+    removeTiles();
+    generateUserGrid(newSize); // Removes previous tiles and adds in new ones
+};
+
+function removeTiles() {
+    let gridContainer = document.querySelector('#gridContainer');
+    while (gridContainer.firstChild) {
+        gridContainer.removeChild(gridContainer.firstChild); // Should remove the fist child node as long as one exists
+    }
+};
+
+function generateUserGrid(newSize) {
+    let gridContainer = document.querySelector('#gridContainer');
+    let newGridTile = document.createElement("div");
+    gridContainer.appendChild(newGridTile);
+
+    let clonedGrid;
+    for (let i = 0; i < newSize * newSize - 1; i++) {
+        clonedGrid = newGridTile.cloneNode();
+        gridContainer.appendChild(clonedGrid);
+    }
+};
