@@ -36,9 +36,14 @@ function resizeGrid() {
     else if (Math.sign(newSize) == 0 || Math.sign(newSize) == -1) {
         prompt("That's a bit too low. Try again.");
     }
-    else if (newSize == null) {
+    else if (newSize === null) {
         generateDefaultGrid();
     }
+    else {
+        const styleSheet = document.styleSheets[0];
+        styleSheet.cssRules[2].style.gridTemplateRows = `repeat(${newSize}, auto)`;
+        styleSheet.cssRules[2].style.gridTemplateColumns = `repeat(${newSize}, auto)`;
+    } // Tells CSS to use the new size for the number of rows and columns
     removeTiles();
     generateUserGrid(newSize); // Removes previous tiles and adds in new ones
 };
@@ -46,7 +51,7 @@ function resizeGrid() {
 function removeTiles() {
     let gridContainer = document.querySelector('#gridContainer');
     while (gridContainer.firstChild) {
-        gridContainer.removeChild(gridContainer.firstChild); // Should remove the fist child node as long as one exists
+        gridContainer.removeChild(gridContainer.firstChild); // Removes default grids so new ones can be added in
     }
 };
 
