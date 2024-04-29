@@ -32,9 +32,11 @@ function resizeGrid() {
     let newSize = prompt("How many squares would you like per side? In between 1 and 100 please.");
     if (newSize > 100) {
         prompt("That's too high! Try again.");
+        return; //Needed to stop the unwanted value going through
     }
     else if (Math.sign(newSize) == 0 || Math.sign(newSize) == -1) {
         prompt("That's a bit too low. Try again.");
+        return;
     }
     else if (newSize === null) {
         generateDefaultGrid();
