@@ -1,5 +1,6 @@
 generateDefaultGrid();
 const resetButton = document.querySelector('#resetButton');
+resetButton.addEventListener('click', resetGrid);
 
 function generateDefaultGrid() {
     let newGridTile = document.createElement("div");
@@ -13,8 +14,15 @@ function generateDefaultGrid() {
         clonedGrid = newGridTile.cloneNode();
         gridContainer.appendChild(clonedGrid);
     }
-}
+};
 
 function changeColor(event) {
     event.target.classList.add("tileHovered");
-}
+};
+
+function resetGrid() {
+    let allTiles = document.querySelectorAll('.tileHovered');
+    allTiles.forEach(element => {
+        element.classList.remove("tileHovered");
+    });
+};
