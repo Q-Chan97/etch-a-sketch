@@ -7,3 +7,22 @@ body {
     height: 100vh;
     background-color: red;
 }
+
+h1 {
+    color: white;
+}
+
+#gridContainer {
+    height: 90%;
+    width: 90%;
+    display: grid;
+    background-color: white;
+    border: black, 3px, solid;
+    align-self: center;
+    grid-template-columns: repeat(16, auto);
+    grid-template-rows: repeat(16, auto);
+}
+
+.tileHovered {
+    background-color: black;
+}
